@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Ionic-Spotify</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="dark">
+    <ion-searchbar animated show-cancel-button="true" debounce="500" (keyup)="onInput(artist)" (ionCancel)="onCancel($event)"
+      [(ngModel)]="artist"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="gray">
+
+  <div *ngIf="artists.length > 0" >
+
+    <span *ngFor="let artist of artists" (click)="goToArtist(artist.id);">
+      <ion-card *ngIf="artist != undefined">
+        <ion-img *ngIf="artist.images.length > 0" src="{{artist.images[1].url}}"></ion-img>
+        <ion-card-header>
+
+          <ion-card-title>{{artist.name}}</ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+
+            <ion-button fill="outline" slot="end">{{artist.followers.total}} followers</ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </span>
+
+
+    <!-- <div style="text-align: center;color:#eaeaea" *ngIf="artist.length == 0 && !isCanceled">
+      <h1 style="font-size:100px;">:(</h1>
+      <h3 style="font-weight: 200;">No data to Show</h3>
+    </div> -->
+
+
+    
+
+
+
+  </div>
+
+  <!-- <loader></loader> -->
+
+
+</ion-content>
